@@ -47,7 +47,7 @@ const Signup = () => {
         console.log(values);
         setIsSubmitting(true);
 
-        axios.post("http://localhost:6000/auth/signup", values, {
+        axios.post("http://localhost:6001/auth/signup", values, {
                 headers: { "Content-Type": "application/json" },
             })
             .then((response) => {

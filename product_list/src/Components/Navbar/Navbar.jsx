@@ -13,7 +13,7 @@ import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setLogout, setMode, } from '../../Redux/userReducer';
+import { setLogout, setMode, } from '../../state';
 
 
 

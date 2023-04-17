@@ -8,6 +8,7 @@ import Home from "./Pages/Home/Home";
 
 function App() {
   const currentUser = useSelector((state) => Boolean(state.token));
+
   const mode = useSelector((state) => state.mode);
 
   const darkTheme = createTheme({

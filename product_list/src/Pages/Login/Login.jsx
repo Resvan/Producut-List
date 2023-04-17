@@ -11,8 +11,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { toast, Toaster } from "react-hot-toast";
-import { setLogin } from '../../Redux/userReducer';
+
 import axios from 'axios';
+import { setLogin } from '../../state';
 
 
 
@@ -35,7 +36,7 @@ const Login = () => {
 
         setIsSubmitting(true);
         axios
-            .post('http://localhost:6000/auth/login', values, {
+            .post('http://localhost:6001/auth/login', values, {
                 headers: { "Content-Type": "application/json" },
             })
             .then((response) => {

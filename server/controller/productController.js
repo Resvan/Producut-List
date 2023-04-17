@@ -1,16 +1,20 @@
+import cloudinary from "../config/cloudinery.js";
 import Product from "../models/Product.js";
 
 
 export const addProduct = async (req, res) => {
     try {
-        const { price, imagePath } = req.body;
+        const { name, price } = req.body;
         const { id } = req.user;
-        
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: "Products"
+        });
 
         const newProduct = new Product({
+            name,
             price,
             owner: id,
-            image: imagePath,
+            image: result.secure_url,
         });
 
         const savedProduct = await newProduct.save();
@@ -18,16 +22,15 @@ export const addProduct = async (req, res) => {
 
         res.status(201).json(savedProduct);
     } catch (error) {
-        console.log(error);
         res.status(404).json({ message: error.message });
     }
 };
 
-export const getAllProducts = async (req, res) => {
+export const getAllProduct = async (req, res) => {
     try {
-        const Products = await Product.find();
-        res.status(200).json(Products)
+        const products = await Product.find()
+        res.status(200).json(products)
     } catch (err) {
-        
+        res.status(404).json({ message: error.message });
     }
 }
